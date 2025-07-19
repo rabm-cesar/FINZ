@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINZ - Suas Finanças</title>
+    
+    <!-- Importar a fonte 'Inter' do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Ligar a nossa folha de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <!-- Cabeçalho da Aplicação -->
+        <header class="app-header">
+            <h1 class="app-title">FINZ</h1>
+            <!-- Ícone de Perfil (SVG embutido) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user-icon"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="8" r="3"></circle><path d="M7 18.7A10.1 10.1 0 0 1 12 16a10.1 10.1 0 0 1 5 2.7"></path></svg>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="app-main">
+            <!-- Cartão de Saldo -->
+            <div class="balance-card">
+                <p class="balance-label">Saldo do Mês</p>
+                <p class="balance-value" id="balance-value">R$ 0,00</p>
+            </div>
+
+            <!-- Botão Central de Adicionar -->
+            <div class="add-button-container">
+                <button id="open-modal-btn" class="add-button" aria-label="Adicionar nova transação">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plus-icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+            </div>
+
+            <!-- Lista de Transações -->
+            <div class="transaction-list-container">
+                <h2 class="transaction-list-title">Transações Recentes</h2>
+                <ul class="transaction-list" id="transaction-list">
+                    <!-- As transações serão inseridas aqui pelo JavaScript -->
+                </ul>
+            </div>
+        </main>
+        
+        <!-- Navegação Inferior (Apenas Visual) -->
+        <nav class="bottom-nav">
+             <!-- Ícones da Navegação -->
+        </nav>
+    </div>
+
+    <!-- Modal para Adicionar Transação (inicialmente escondido) -->
+    <div class="modal-overlay hidden" id="add-transaction-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Nova Transação</h2>
+                <button class="close-modal-btn" id="close-modal-btn" aria-label="Fechar modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <form id="transaction-form">
+                <div class="form-group amount-group">
+                    <label for="amount">Valor</label>
+                    <input type="text" id="amount" placeholder="R$ 0,00" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="type-toggle">
+                        <button type="button" id="type-expense" class="toggle-btn active" data-type="expense">Despesa</button>
+                        <button type="button" id="type-income" class="toggle-btn" data-type="income">Receita</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" placeholder="Ex: Almoço com amigos">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <select id="category">
+                        <option>Alimentação</option>
+                        <option>Transporte</option>
+                        <option>Moradia</option>
+                        <option>Lazer</option>
+                        <option>Salário</option>
+                        <option>Outra</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="save-btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Ligar o nosso ficheiro JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
